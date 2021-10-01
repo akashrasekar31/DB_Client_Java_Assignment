@@ -59,6 +59,12 @@ public class NaceDataController {
 	
 	@PostMapping("/saveNaceDetails")
 	public ResponseMessage saveNaceDetails(@RequestBody List<NaceBean> naceBean) {
-		return naceDataService.saveNaceDetails(naceBean);
+		List<NaceBean> saved=naceDataService.saveNaceDetails(naceBean);
+		if(saved.size()==naceBean.size()) {
+			return new ResponseMessage("Data Saved Successfully");
+		}
+		else {
+			return new ResponseMessage("Data not synced, some error occured");
+		}
 	}
 }

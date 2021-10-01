@@ -37,15 +37,14 @@ public class NaceDataService {
 	  }
 
 
-	public ResponseMessage saveNaceDetails(List<NaceBean> naceBean) {
-		ResponseMessage msg=new ResponseMessage();
+	public List<NaceBean> saveNaceDetails(List<NaceBean> naceBean) {
+		List<NaceBean> saved=null;
 		try {
-		      naceDataRepository.saveAll(naceBean);
-		      msg.setMessage("Data Saved successfully");
+			saved= naceDataRepository.saveAll(naceBean);
 		    } catch (Exception e) {
 		      e.printStackTrace();
 		      throw new RuntimeException("fail to save data: " + e.getMessage());
 		    }	
-		return msg;
+		return saved;
 	}
 }
