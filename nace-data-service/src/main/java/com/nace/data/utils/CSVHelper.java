@@ -29,7 +29,7 @@ public class CSVHelper {
 		return true;
 	}
 
-	public static List<NaceBean> csvToTutorials(InputStream is) {
+	public static List<NaceBean> csvToBean(InputStream is) {
 		List<NaceBean> data = new ArrayList<NaceBean>();
 		try {
 
@@ -40,13 +40,13 @@ public class CSVHelper {
 			Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 
 			for (CSVRecord csvRecord : csvRecords) {
-				NaceBean tutorial = new NaceBean(Long.parseLong(csvRecord.get("orderid")),
+				NaceBean dt = new NaceBean(Long.parseLong(csvRecord.get("orderid")),
 						Integer.parseInt(csvRecord.get("level")), csvRecord.get("code"), csvRecord.get("parent"),
 						csvRecord.get("description"), csvRecord.get("itemincludes"), csvRecord.get("extraitemincludes"),
 						csvRecord.get("rulings"), csvRecord.get("itemexcludes"),
 						csvRecord.get("referenceid"));
 
-				data.add(tutorial);
+				data.add(dt);
 			}
 
 		} catch (Exception e) {

@@ -23,7 +23,7 @@ public class NaceDataService {
 
 	  public void putNaceDetails(MultipartFile file) {
 	    try {
-	      List<NaceBean> data = CSVHelper.csvToTutorials(file.getInputStream());
+	      List<NaceBean> data = CSVHelper.csvToBean(file.getInputStream());
 	      naceDataRepository.saveAll(data);
 	    } catch (IOException e) {
 	      e.printStackTrace();
