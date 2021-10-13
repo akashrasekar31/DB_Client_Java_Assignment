@@ -17,7 +17,7 @@ import com.nace.data.bean.NaceBean;
 public class CSVHelper {
 	
 	public static String TYPE = "text/csv";
-	static String[] HEADERs = { "orderid", "level", "code", "description", 
+	static String[] HEADERs = { "orderid", "level", "code", "parent", "description", 
 			  "itemincludes", "extraitemincludes",  "rulings", "itemexcludes", "referenceid"};
 
 	public static boolean hasCSVFormat(MultipartFile file) {

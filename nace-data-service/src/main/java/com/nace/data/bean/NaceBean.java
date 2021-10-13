@@ -27,19 +27,19 @@ public class NaceBean {
 	@Column(name = "parent")
 	private String parent;
 	
-	@Column(name = "description")
+	@Column(name = "description", columnDefinition="TEXT")
 	private String description;
 	
-	@Column(name = "item_includes")
+	@Column(name = "item_includes", columnDefinition="TEXT")
 	private String itemIncludes;
 	
-	@Column(name = "extra_item_includes")
+	@Column(name = "extra_item_includes", columnDefinition="TEXT")
 	private String extraItemIncludes;
 	
 	@Column(name = "rulings")
 	private String rulings;
 	
-	@Column(name = "item_excludes")
+	@Column(name = "item_excludes", columnDefinition="TEXT")
 	private String itemExcludes;
 	
 	@Column(name = "reference_id")
