@@ -35,6 +35,14 @@ public class NaceDataService {
 	  public Optional<NaceBean> getNaceDetails(long orderId) {
 	    return naceDataRepository.findById(orderId);
 	  }
+	  
+	  public Optional<List<NaceBean>> getNaceDetailsByLevel(int level) {
+		    return naceDataRepository.findByLevel(level);
+		  }
+	  
+	  public List<NaceBean> getNaceDetailsAllin() {
+		    return naceDataRepository.findAll();
+		  }
 
 
 	public List<NaceBean> saveNaceDetails(List<NaceBean> naceBean) {

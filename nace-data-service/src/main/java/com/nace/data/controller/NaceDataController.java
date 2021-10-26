@@ -1,7 +1,10 @@
 package com.nace.data.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +57,30 @@ public class NaceDataController {
 		else {
 			throw new DataNotFound("No Data for Order id: "+orderID);
 		}
+		return resData;
+	}
+	
+	@GetMapping("/getNaceDetailsByLevel/{level}")
+	public List<NaceBean> getNaceDetailsByLevel(@PathVariable Integer level) {
+		Optional<List<NaceBean>> data=naceDataService.getNaceDetailsByLevel(level);
+	    ArrayList<NaceBean> resData= new ArrayList<>();
+		if(data.isPresent()) {
+			resData= (ArrayList<NaceBean>) data.get();
+		}
+		else {
+			throw new DataNotFound("No Data for level: "+level);
+		}
+		return resData;
+	}
+	
+	@GetMapping("/getNaceDetailsAll/{level}")
+	public List<NaceBean> getNaceDetailsAll(@PathVariable Integer level) {
+		List<NaceBean> data=naceDataService.getNaceDetailsAllin();			
+	    List<NaceBean> resData= data.stream().filter(d->d.getLevel()>level).collect(Collectors.toList());
+		
+		if(resData.isEmpty()) { 
+			 throw new DataNotFound("No Data for level: "+level); 
+		}	 
 		return resData;
 	}
 	
