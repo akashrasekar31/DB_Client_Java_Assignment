@@ -49,6 +49,7 @@ public class NaceBean {
 		super();
 	}
 
+
 	public NaceBean(long orderId, int level, String code, String parent, String description, String itemIncludes,
 			String extraItemIncludes, String rulings, String itemExcludes, String referenceId) {
 		super();
